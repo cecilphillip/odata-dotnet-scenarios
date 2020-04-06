@@ -1,0 +1,50 @@
+###
+# Return Metadata
+GET https://localhost:5001/odata/$metadata
+
+###
+# Retrieve products
+// OData returns 200 OK even if exception is thrown in serializer
+GET https://localhost:5001/odata/Products
+
+###
+# Retrieve products w/ count
+GET https://localhost:5001/odata/products?$count=true
+
+###
+# Retrive top 5
+GET https://localhost:5001/odata/products?$top=5
+
+###
+# Retrive count
+// Does work for InMemory, MongoAPI
+GET https://localhost:5001/odata/products/$count
+
+###
+# Select product fields
+// Does work for MongoAPI
+GET https://localhost:5001/odata/products?$select=ID,Name,Price
+
+###
+# Order products by property name
+GET https://localhost:5001/odata/products?$orderby=Price asc
+
+###
+# Filter products w/ price > $100 and Quantity > 130
+// returns incorrect results
+GET https://localhost:5001/odata/products?$filter=Price gt 100 and Quantity gt 130
+
+###
+# Get aggregate count
+// Can't get this to work yet
+GET https://localhost:5001/odata/products?$apply=aggregate($count as TotalCount)
+
+###
+# Get aggregate product quantity
+// Can't get this to work yet
+GET https://localhost:5001/odata/products?$apply=aggregate(Quantity with sum as Total)
+
+###
+# Category group count
+// Can't get this to work yet
+GET https://localhost:5001/odata/products?$apply=groupby((Category), aggregate($count as Cnt))
