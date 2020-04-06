@@ -7,9 +7,14 @@
 - [API backed by Cosmos DB (using the v3 .NET SDK)](CosmosSQlAi/)
 
 ### Making requests
+
 The [requests.http](requests.http) file includes various requests to be run against each API endpoint when run locally. It also contains loose notes on various issues.
 
- If you're using VS Code, the [REST Client extension](https://marketplace.visualstudio.com/items?itemName=humao.rest-client&WT.mc_id=odata-github-cephilli) supports running requests in this format.
+If you're using VS Code, the [REST Client extension](https://marketplace.visualstudio.com/items?itemName=humao.rest-client&WT.mc_id=odata-github-cephilli) supports running requests in this format.
+
+### Populating the databases.
+
+Each API has a `/api/populate` endpoint that you can make a HTTP `POST` request to for setting up the data. This does not apply to the in-memory sample.
 
 ### Reqirements
 
@@ -18,7 +23,7 @@ The [requests.http](requests.http) file includes various requests to be run agai
 - [MongoDB Community Server](https://www.mongodb.com/download-center/community) or compatiable service for version 3.6
 - [Azure Cosmos DB database w/ the SQL API ](https://azure.microsoft.com/try/cosmosdb/?WT.mc_id=odata-github-cephilli)
 
-> OPTIONALLY you can run MongoDB on a local port with docker using the following command.
+> Optionally you can run MongoDB on a local port with docker using the following command.
 
 ```shell
 > docker run -d -p 27017:27017 --name mongodb mongo:4.2.5-bionic
