@@ -1,3 +1,6 @@
+ # Populate data. Not for InMemoryApi
+ POST https://localhost:5001/api/populate
+
 ###
 # Return Metadata
 GET https://localhost:5001/odata/$metadata
@@ -9,6 +12,7 @@ GET https://localhost:5001/odata/Products
 
 ###
 # Retrieve products w/ count
+// DocumentQueryException: Method 'LongCount' is not supported is thrown by Cosmos
 GET https://localhost:5001/odata/products?$count=true
 
 ###
@@ -17,12 +21,12 @@ GET https://localhost:5001/odata/products?$top=5
 
 ###
 # Retrive count
-// Does work for InMemory, MongoAPI
+// Does work for InMemory, MongoAPI or CosmosSQLApi. Returns 404
 GET https://localhost:5001/odata/products/$count
 
 ###
 # Select product fields
-// Does work for MongoAPI
+// Does work for MongoAPI or CosmosSQLApi
 GET https://localhost:5001/odata/products?$select=ID,Name,Price
 
 ###
@@ -31,8 +35,8 @@ GET https://localhost:5001/odata/products?$orderby=Price asc
 
 ###
 # Filter products w/ price > $100 and Quantity > 130
-// returns incorrect results
-GET https://localhost:5001/odata/products?$filter=Price gt 100 and Quantity gt 130
+// returns incorrect results for MongoAPI
+GET https://localhost:5001/odata/products?$filter=Price gt 100 and Quantity lt 130
 
 ###
 # Get aggregate count
