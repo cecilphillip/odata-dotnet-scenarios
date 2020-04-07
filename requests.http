@@ -21,7 +21,7 @@ GET https://localhost:5001/odata/products?$top=5
 
 ###
 # Retrive count
-// Does work for InMemory, MongoAPI or CosmosSQLApi. Returns 404
+// Does work for InMemory, MongoAPI, EfCoreApi or CosmosSQLApi. Returns 404
 GET https://localhost:5001/odata/products/$count
 
 ###
@@ -31,11 +31,13 @@ GET https://localhost:5001/odata/products?$select=ID,Name,Price
 
 ###
 # Order products by property name
-GET https://localhost:5001/odata/products?$orderby=Price asc
+// EfcoreAPI = sqlite cannot order by expressions of type decimal. Works otherwise
+GET https://localhost:5001/odata/products?$orderby=Price desc
 
 ###
 # Filter products w/ price > $100 and Quantity > 130
 // returns incorrect results for MongoAPI
+// EfcoreAPI = sqlite cannot filter expressions of type decimal. Works otherwise
 GET https://localhost:5001/odata/products?$filter=Price gt 100 and Quantity lt 130
 
 ###

@@ -1,36 +1,34 @@
-using Bogus;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Bogus;
+using EFCore.BulkExtensions;
+using EfCoreApi.Data;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
-namespace MongoApi.Controllers
+namespace EfCoreApi.Controllers
 {
     [ApiController]
     [Route("/api/populate")]
     public class PopulateController : ControllerBase
     {
-        private readonly IMongoClient mongoClient;
-        public PopulateController(IMongoClient mongoClient)
+        private readonly ProductsContext context;
+
+        public PopulateController(ProductsContext context)
         {
-            this.mongoClient = mongoClient;
+            this.context = context;
         }
 
         [HttpPost]
         public async Task<ActionResult> Run()
         {
-            var db = mongoClient.GetDatabase("products");
-            var collection = db.GetCollection<Product>("catalog");
-
             // Remote all records from the collection
-            await collection.DeleteManyAsync(p => p.ID != string.Empty);
+            //await context.Database.ExecuteSqlRawAsync("DELETE TABLE Products;");
 
             // populate catalog
-            await collection.InsertManyAsync(Generate());
-
-
+            await context.BulkInsertAsync(Generate());
             return StatusCode(StatusCodes.Status201Created);
         }
 
