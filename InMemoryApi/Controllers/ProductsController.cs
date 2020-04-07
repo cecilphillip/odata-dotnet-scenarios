@@ -32,7 +32,5 @@ namespace InMemoryApi.Controllers
 
             Products = products;
         }
-
-        v
     }
 }
