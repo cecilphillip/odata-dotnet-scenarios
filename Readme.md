@@ -4,6 +4,7 @@
 
 - [API backed with in-memory collection](InMemoryApi/)
 - [API backed by MongoDB](MongoApi/)
+- [API backed by EF Core and SQLite](EfCoreApi/)
 - [API backed by Cosmos DB (using the v3 .NET SDK)](CosmosSQlAi/)
 
 ### Making requests
