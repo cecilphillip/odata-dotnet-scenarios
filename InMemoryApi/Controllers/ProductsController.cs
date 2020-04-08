@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using Bogus;
 using Microsoft.AspNet.OData;
 using Microsoft.AspNet.OData.Routing;
@@ -31,6 +30,14 @@ namespace InMemoryApi.Controllers
                 .Generate(100);
 
             Products = products;
+        }
+
+        [ODataRoute]
+        [EnableQuery]
+        [HttpGet("")]
+        public ActionResult Get()
+        {
+            return Ok(Products);
         }
     }
 }
