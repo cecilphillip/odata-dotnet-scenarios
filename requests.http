@@ -21,7 +21,7 @@ GET https://localhost:5001/odata/products?$top=5
 
 ###
 # Retrive count
-// Does work for InMemory, MongoAPI, EfCoreApi or CosmosSQLApi. Returns 404
+// Does work for MongoAPI, EfCoreApi or CosmosSQLApi. Returns 404
 GET https://localhost:5001/odata/products/$count
 
 ###

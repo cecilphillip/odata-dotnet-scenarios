@@ -35,7 +35,7 @@ namespace InMemoryApi.Controllers
         [ODataRoute]
         [EnableQuery]
         [HttpGet("")]
-        public ActionResult Get()
+        public IActionResult Get()
         {
             return Ok(Products);
         }
