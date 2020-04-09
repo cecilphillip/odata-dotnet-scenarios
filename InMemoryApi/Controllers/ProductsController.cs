@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Bogus;
 using Microsoft.AspNet.OData;
 using Microsoft.AspNet.OData.Routing;
@@ -37,7 +38,7 @@ namespace InMemoryApi.Controllers
         [HttpGet("")]
         public IActionResult Get()
         {
-            return Ok(Products);
+            return Ok(Products.AsQueryable());
         }
     }
 }
