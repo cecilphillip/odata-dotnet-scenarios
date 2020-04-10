@@ -21,7 +21,7 @@ GET https://localhost:5001/odata/products?$top=5
 
 ###
 # Retrive count
-// Does work for MongoAPI, EfCoreApi or CosmosSQLApi. Returns 404
+// Does work for MongoAPI, or CosmosSQLApi. Returns 404
 GET https://localhost:5001/odata/products/$count
 
 ###
@@ -42,15 +42,15 @@ GET https://localhost:5001/odata/products?$filter=Price gt 100 and Quantity lt 1
 
 ###
 # Get aggregate count
-// Can't get this to work yet
+// Works with InMemory
 GET https://localhost:5001/odata/products?$apply=aggregate($count as TotalCount)
 
 ###
 # Get aggregate product quantity
-// Can't get this to work yet
+// Works with InMemory
 GET https://localhost:5001/odata/products?$apply=aggregate(Quantity with sum as Total)
 
 ###
 # Category group count
-// Can't get this to work yet
+// Works with InMemory
 GET https://localhost:5001/odata/products?$apply=groupby((Category), aggregate($count as Cnt))
