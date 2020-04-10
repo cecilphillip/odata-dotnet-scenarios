@@ -2,6 +2,7 @@
 using Microsoft.AspNet.OData;
 using Microsoft.AspNet.OData.Routing;
 using Microsoft.AspNetCore.Mvc;
+using MongoApi.Data;
 using MongoDB.Driver;
 
 namespace MongoApi.Controllers

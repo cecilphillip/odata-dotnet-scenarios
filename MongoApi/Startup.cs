@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OData.Edm;
+using MongoApi.Data;
 using MongoDB.Bson.Serialization;
 using MongoDB.Driver;
 

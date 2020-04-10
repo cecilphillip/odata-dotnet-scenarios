@@ -2,6 +2,7 @@ using Bogus;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using MongoApi.Data;
 using MongoDB.Driver;
 using System;
 using System.Collections.Generic;

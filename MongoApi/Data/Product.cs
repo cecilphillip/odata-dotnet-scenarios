@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace MongoApi
+namespace MongoApi.Data
 {
     public class Product
     {
