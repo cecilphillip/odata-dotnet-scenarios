@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MongoApi", "MongoApi\MongoA
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EfCoreApi", "EfCoreApi\EfCoreApi.csproj", "{1DAD54A1-BD54-4C1B-9E13-5A1A92D65E05}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EfCosmosApi", "EfCosmosApi\EfCosmosApi.csproj", "{E3289B4B-42A8-4D4E-A33B-E969A79C866F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -72,5 +74,17 @@ Global
 		{1DAD54A1-BD54-4C1B-9E13-5A1A92D65E05}.Release|x64.Build.0 = Release|Any CPU
 		{1DAD54A1-BD54-4C1B-9E13-5A1A92D65E05}.Release|x86.ActiveCfg = Release|Any CPU
 		{1DAD54A1-BD54-4C1B-9E13-5A1A92D65E05}.Release|x86.Build.0 = Release|Any CPU
+		{E3289B4B-42A8-4D4E-A33B-E969A79C866F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E3289B4B-42A8-4D4E-A33B-E969A79C866F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E3289B4B-42A8-4D4E-A33B-E969A79C866F}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{E3289B4B-42A8-4D4E-A33B-E969A79C866F}.Debug|x64.Build.0 = Debug|Any CPU
+		{E3289B4B-42A8-4D4E-A33B-E969A79C866F}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{E3289B4B-42A8-4D4E-A33B-E969A79C866F}.Debug|x86.Build.0 = Debug|Any CPU
+		{E3289B4B-42A8-4D4E-A33B-E969A79C866F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E3289B4B-42A8-4D4E-A33B-E969A79C866F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E3289B4B-42A8-4D4E-A33B-E969A79C866F}.Release|x64.ActiveCfg = Release|Any CPU
+		{E3289B4B-42A8-4D4E-A33B-E969A79C866F}.Release|x64.Build.0 = Release|Any CPU
+		{E3289B4B-42A8-4D4E-A33B-E969A79C866F}.Release|x86.ActiveCfg = Release|Any CPU
+		{E3289B4B-42A8-4D4E-A33B-E969A79C866F}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
