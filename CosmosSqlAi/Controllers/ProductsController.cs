@@ -24,8 +24,8 @@ namespace CosmosSqlAi.Controllers
 
         [HttpGet("")]
         [ODataRoute]
-        [EnableQuery]
-        public ActionResult<IQueryable<Product>> RetrieveArtifactsQueryable()
+        [EnableQuery(PageSize = 30)]
+        public ActionResult<IQueryable<Product>> Get()
         {
             // Need to set allowSynchronousQueryExecution true ☹️
             var records = container.GetItemLinqQueryable<Product>(allowSynchronousQueryExecution: true);

@@ -27,8 +27,7 @@ namespace CosmosSqlAi
             services.AddOData();
             services.AddSingleton<CosmosClient>(provider =>
             {
-                var config = provider.GetService<IConfiguration>();
-                return new CosmosClientBuilder(config["COSMOSCONNECTION"])
+                return new CosmosClientBuilder(Configuration["COSMOSCONNECTION"])
                         .WithApplicationName(nameof(CosmosSqlAi))
                         .WithRequestTimeout(TimeSpan.FromSeconds(2))
                         .Build();

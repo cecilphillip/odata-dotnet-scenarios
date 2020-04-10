@@ -23,7 +23,7 @@ namespace EfCoreApi.Controllers
         [HttpGet("")]
         [ODataRoute]
         [EnableQuery]
-        public ActionResult<IQueryable<Product>> RetrieveArtifactsQueryable()
+        public ActionResult<IQueryable<Product>> Get()
         {
             var records = context.Products;
             return Ok(records);

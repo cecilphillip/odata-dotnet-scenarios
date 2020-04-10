@@ -24,8 +24,8 @@ namespace EfCoreApi.Controllers
         [HttpPost]
         public async Task<ActionResult> Run()
         {
-            // Remote all records from the collection
-            //await context.Database.ExecuteSqlRawAsync("DELETE TABLE Products;");
+            // Remove all records from the collection
+            await context.Database.ExecuteSqlRawAsync("DELETE TABLE Products;");
 
             // populate catalog
             await context.BulkInsertAsync(Generate());
