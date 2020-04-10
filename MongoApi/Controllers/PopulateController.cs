@@ -1,6 +1,7 @@
 using Bogus;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
@@ -13,12 +14,14 @@ namespace MongoApi.Controllers
     public class PopulateController : ControllerBase
     {
         private readonly IMongoClient mongoClient;
-        public PopulateController(IMongoClient mongoClient)
+        private readonly ILogger<PopulateController> logger;
+        public PopulateController(IMongoClient mongoClient, ILogger<PopulateController> logger)
         {
+            this.logger = logger;
             this.mongoClient = mongoClient;
         }
 
-        [HttpPost]
+        [HttpPost("")]
         public async Task<ActionResult> Run()
         {
             var db = mongoClient.GetDatabase("products");
@@ -27,9 +30,26 @@ namespace MongoApi.Controllers
             // Remote all records from the collection
             await collection.DeleteManyAsync(p => p.ID != string.Empty);
 
-            // populate catalog
-            await collection.InsertManyAsync(Generate());
+            var data = Generate();
 
+            // populate catalog
+            foreach (var item in data)
+            {
+                try
+                {
+                    await collection.InsertOneAsync(item);
+                }
+                catch (System.Exception ex)
+                {
+                    logger.LogError(ex, "There was an issue with");
+                }
+            }
+
+            // InsertManyAsync fails depending on available throughput
+            // await collection.InsertManyAsync(data, new InsertManyOptions
+            // {
+            //     IsOrdered = false
+            // });
 
             return StatusCode(StatusCodes.Status201Created);
         }

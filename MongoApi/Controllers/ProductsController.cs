@@ -6,7 +6,7 @@ using MongoDB.Driver;
 
 namespace MongoApi.Controllers
 {
-    [ODataRoutePrefix("products")]
+    [ODataRoutePrefix("Products")]
     [ApiController]
     public class ProductsController : ODataController
     {
@@ -23,7 +23,7 @@ namespace MongoApi.Controllers
         [HttpGet("")]
         [ODataRoute]
         [EnableQuery]
-        public ActionResult<IQueryable<Product>> RetrieveArtifactsQueryable()
+        public ActionResult Get()
         {
             var records = this.collection.AsQueryable();
             return Ok(records);
