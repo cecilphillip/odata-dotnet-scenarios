@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace InMemoryApi
+namespace InMemoryApi.Data
 {
     public class Product
     {

@@ -1,7 +1,7 @@
+using InMemoryApi.Data;
 using Microsoft.AspNet.OData.Builder;
 using Microsoft.AspNet.OData.Extensions;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OData.Edm;
@@ -23,7 +23,7 @@ namespace InMemoryApi
             services.AddOData();
         }
 
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app)
         {
             app.UseHttpsRedirection();
             app.UseRouting();
@@ -39,7 +39,8 @@ namespace InMemoryApi
         public static IEdmModel GetEdmModel()
         {
             var odataBuilder = new ODataConventionModelBuilder();
-            var artifactEntitySet = odataBuilder.EntitySet<Product>("Products");
+            odataBuilder.EntitySet<Product>("Products");
+            odataBuilder.EntitySet<Book>("Books");
             return odataBuilder.GetEdmModel();
         }
     }

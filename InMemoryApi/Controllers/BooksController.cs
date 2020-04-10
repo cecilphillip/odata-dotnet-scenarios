@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Bogus;
@@ -9,20 +9,20 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace InMemoryApi.Controllers
 {
-    [ODataRoutePrefix("products")]
+    [ODataRoutePrefix("books")]
     [ApiController]
-    public class ProductsController : ODataController
+    public class BooksController : ODataController
     {
-        private static List<Product> Products { get; set; }
+        private static List<Book> Books { get; set; }
 
-        static ProductsController()
+        static BooksController()
         {
-            var products = new Faker<Product>()
+            var books = new Faker<Book>()
                 .RuleFor(p => p.ID, f => Guid.NewGuid().ToString("N"))
-                .RuleFor(p => p.Name, f => f.Name.FullName())
-                .RuleFor(p => p.Category, f => f.Commerce.Categories(1)[0])
-                .RuleFor(p => p.BarCode, f => f.Commerce.Ean13())
-                .RuleFor(p => p.Quantity, f => f.Random.Number(1, 200))
+                .RuleFor(p => p.Title, f => f.Commerce.ProductName())
+                .RuleFor(p => p.Author, f => f.Name.FullName())
+                .RuleFor(p => p.ISBN, f => f.Commerce.Ean13())
+                .RuleFor(p => p.Genre, f => f.Commerce.Categories(1)[0])
                 .RuleFor(p => p.Price, f =>
                 {
                     decimal amount = 150.0m - 10.0m;
@@ -31,7 +31,7 @@ namespace InMemoryApi.Controllers
                 })
                 .Generate(100);
 
-            Products = products;
+            Books = books;
         }
 
         [ODataRoute]
@@ -39,7 +39,7 @@ namespace InMemoryApi.Controllers
         [HttpGet("")]
         public IActionResult Get()
         {
-            return Ok(Products.AsQueryable());
+            return Ok(Books.AsQueryable());
         }
     }
 }
